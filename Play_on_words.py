@@ -17,8 +17,8 @@ def playing(anyword):
     game_is_over = False
     while not game_is_over:
         mess = input()
-        if len(mess) != 0:
-            if anyword[-1] == "ъ" or anyword[-1] == "ь" or anyword[-1] == "ы":
+        if mess:
+            if anyword[-1] in ["ъ", "ь", "ы"]:
                 if anyword[-2] == mess.lower()[0]:
                     print(anyword)
                     for candidant in available_words:
@@ -40,14 +40,14 @@ def playing(anyword):
                         print(anyword)
                         available_words.remove(candidant)
                         break
-                    elif mess.lower()[-1] == "ъ" or mess.lower()[-1] == "ь" or mess.lower()[-1] == "ы":
+                    elif mess.lower()[-1] in ["ъ", "ь", "ы"]:
                         if candidant[0].lower() == mess[-2].lower():
                             anyword = candidant
                             print(anyword)
                             available_words.remove(candidant)
                             break
                 else:
-                    print("Словарный запас был иссечён, схожу за новой порцией.")
+                    print("Словарный запас был исчерпан, схожу за новой порцией.")
                     game_is_over = True
         else:
             print("Введите слово")
